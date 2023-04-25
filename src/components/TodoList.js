@@ -53,11 +53,18 @@ const TodoList = () => {
     );
   };
 
+  const animateText = () => {
+    const todoList = document.getElementById('todo-list');
+    todoList.classList.add(styles.moveText);
+    setTimeout(() => {
+      todoList.classList.remove(styles.moveText);
+    }, 1000);
+  }
+
   // 컴포넌트를 렌더링합니다.
   return (
     <div className={styles.container}>
-      <h1 className="text-xl mb-4 font-bold dotted decoration-wavy" style={{
-       textDecoration: "underline dotted", color: "red" }}>
+      <h1 className={`text-xl mb-4 font-bold ${styles.dotted} ${styles.wavy}`} id="todo-list">
         Todo List
       </h1>
       {/* 할 일을 입력받는 텍스트 필드입니다. */}
@@ -98,7 +105,10 @@ const TodoList = () => {
           //   color: #0070f3;
           // }
           className="shadow-lg w-40 justify-self-end p-1 mb-4 font-bold bg-blue-500 text-white border border-blue-500 rounded hover:bg-white hover:text-blue-500"
-          onClick={addTodo}
+          onClick={() => {
+            addTodo();
+          animateText();
+        }}
         >
           Add Todo
         </button>
