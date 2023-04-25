@@ -56,7 +56,7 @@ const TodoList = () => {
   // 컴포넌트를 렌더링합니다.
   return (
     <div className={styles.container}>
-      <h1 className="text-xl mb-4 font-bold underline underline-offset-4 decoration-wavy">
+      <h1 className="text-xl mb-4 font-bold dotted decoration-wavy">
         Todo List
       </h1>
       {/* 할 일을 입력받는 텍스트 필드입니다. */}
@@ -91,7 +91,7 @@ const TodoList = () => {
           //   background-color: #fff;
           //   color: #0070f3;
           // }
-          className="w-40 justify-self-end p-1 mb-4 bg-blue-500 text-white border border-blue-500 rounded hover:bg-white hover:text-blue-500"
+          className="w-40 justify-self-end p-1 mb-4 font-bold bg-blue-500 text-white border border-blue-500 rounded hover:bg-white hover:text-blue-500"
           onClick={addTodo}
         >
           Add Todo
