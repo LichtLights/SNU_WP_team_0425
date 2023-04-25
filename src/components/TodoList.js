@@ -6,6 +6,7 @@
 import React, { useState } from "react";
 import TodoItem from "@/components/TodoItem";
 import styles from "@/styles/TodoList.module.css";
+import "animate.css";
 
 // TodoList 컴포넌트를 정의합니다.
 const TodoList = () => {
@@ -26,6 +27,11 @@ const TodoList = () => {
     // ...todos => {id: 1, text: "할일1", completed: false}, {id: 2, text: "할일2", completed: false}}, ..
     setTodos([...todos, { id: Date.now(), text: input, completed: false, timestamp: Date.now() }]);
     setInput("");
+    const container = document.querySelector(`.${styles.container}`);
+    container.classList.add("animate__animated", "animate__bounce");
+    setTimeout(() => {
+      container.classList.remove("animate__animated", "animate__bounce");
+    }, 1000);
   };
 
   // toggleTodo 함수는 체크박스를 눌러 할 일의 완료 상태를 변경하는 함수입니다.
@@ -53,18 +59,12 @@ const TodoList = () => {
     );
   };
 
-  const animateText = () => {
-    const todoList = document.getElementById('todo-list');
-    todoList.classList.add(styles.moveText);
-    setTimeout(() => {
-      todoList.classList.remove(styles.moveText);
-    }, 1000);
-  }
 
   // 컴포넌트를 렌더링합니다.
   return (
     <div className={styles.container}>
-      <h1 className={`text-xl mb-4 font-bold ${styles.dotted} ${styles.wavy}`} id="todo-list">
+      <h1 className="text-xl mb-4 font-bold" style={{ 
+       textDecoration: "underline dotted", color: "gray" }}>
         Todo List
       </h1>
       {/* 할 일을 입력받는 텍스트 필드입니다. */}
@@ -105,10 +105,7 @@ const TodoList = () => {
           //   color: #0070f3;
           // }
           className="shadow-lg w-40 justify-self-end p-1 mb-4 font-bold bg-blue-500 text-white border border-blue-500 rounded hover:bg-white hover:text-blue-500"
-          onClick={() => {
-            addTodo();
-          animateText();
-        }}
+          onClick={addTodo}
         >
           Add Todo
         </button>

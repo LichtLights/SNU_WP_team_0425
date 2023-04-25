@@ -37,3 +37,28 @@ button.addButton:hover {
   margin-left: 10px;
   flex-grow: 1;
 }
+
+.title {
+  animation: move 2s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.text-move {
+  animation: move 1s linear infinite;
+}
+
+.active {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
